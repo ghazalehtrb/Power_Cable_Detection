@@ -9,17 +9,16 @@ For the original U-net network go to : https://lmb.informatik.uni-freiburg.de/pe
 
 ## data folders setup
 
-1. all_data1
-1. └───train
-    1. │─── image
-    1. │─── mask
+* all_data1
+* └───train
+    * │─── image
+    * │─── mask
 
-1. └───test
-    1. │─── image
-    1. │─── mask
-    1. │─── preds
+* └───test
+    * │─── image
+    * │─── mask
+    * │─── preds
     
 ## Results
 
-![GitHub Logo](/images/logo.png)
-Format: ![Alt Text](url)
+![Alt Text](https://github.com/ghazalehtrb/Power_Cable_Detection/blob/master/results/w.jpg)
