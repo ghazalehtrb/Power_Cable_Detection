@@ -5,6 +5,8 @@ import matplotlib.image as mp
 import numpy as np
 import random
 import termcolor
+from scipy.misc import imsave
+import time
 from losses import *
 import matplotlib.pyplot as plt
 from skimage.transform import resize
@@ -140,8 +142,8 @@ class Unet:
 
             logits = self.build_net()
 
-            tf.summary.image('Shadow Detection 1', tf.reshape(logits[..., 1], [-1, 224, 224, 1]),self.BATCH_SIZE)
-            tf.summary.image('Shadow Detection', tf.reshape(self.mask[..., 1], [-1, 224, 224, 1]),self.BATCH_SIZE)
+            tf.summary.image('wire Detection 1', tf.reshape(logits[..., 1], [-1, 224, 224, 1]),self.BATCH_SIZE)
+            tf.summary.image('wire Detection', tf.reshape(self.mask[..., 1], [-1, 224, 224, 1]),self.BATCH_SIZE)
 
             loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(labels=self.mask, logits=logits))
             tf.summary.scalar('Cost', loss)
@@ -217,8 +219,6 @@ class Unet:
                             print('Model was saved successfully in epoch ' + str(epoch))
                         epoch += 1
             else:
-                from scipy.misc import imsave
-                import time
                 saver.restore(sess, self.weight_save + 'Model-' + str(98000) + '.ckpt')
                 bd = 'all_data1/test/image/'
                 images = [(name,mp.imread(bd + name)) for name in os.listdir(bd)]
