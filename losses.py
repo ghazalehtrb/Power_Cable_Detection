@@ -5,10 +5,10 @@ def weighted_loss(label, logits):
     logits = tf.sigmoid(logits)
     positive_wire_mask = tf.cast(label, tf.bool)
     negative_wire_mask = tf.logical_not(positive_wire_mask)
-    shadow_acc = tf.reduce_sum(1. - tf.boolean_mask(logits, positive_wire_mask))
-    non_shadow_acc = tf.reduce_sum(tf.boolean_mask(logits, negative_wire_mask))
+    wire_acc = tf.reduce_sum(1. - tf.boolean_mask(logits, positive_wire_mask))
+    no_wire_acc = tf.reduce_sum(tf.boolean_mask(logits, negative_wire_mask))
     t = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=label, logits=logits))
-    loss = 5 * shadow_acc + non_shadow_acc + t * 100
+    loss = 5 * wire_acc + no_wire_acc + t * 100
     return loss
 
 
