@@ -1,11 +1,12 @@
 # Power_Cable_Detection
-This project was for bachelor thesis.
 
-I used USF (University of South Florida) wire dataset to train the network. The data set contains wire images along with the coordinates of the starting and ending point of the wires stored in a txt file. I created the groundtruth images from these coordinates myself. The python codes for creating the dataset is in trans.py file. To expand the dataset, the images were chopped and rotated along with their groundtruth.
+This project was for my bachelor's dissertation.
+The U-net encoader-decoder network is trained for semantic segmentation of power cables. 
+I used USF (University of South Florida) wire dataset to train the network. The data set contains wire images along with the coordinates of the starting and ending points of the wires stored in a txt file. I generated the groundtruth images from these coordinates myself. The python codes for creating the dataset is in trans.py file. To expand the dataset, the images were chopped and rotated together with their groundtruth.
 
 I have used Hough Transform as a post processing step to abtain the coordinate of the detected wires.
 
-For the original U-net network go to : https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/.
+Please refer to https://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/ for the original U-net network.
 
 ## data folders setup
 
