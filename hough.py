@@ -6,16 +6,9 @@ gray = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
 edges = cv2.Canny(gray,50,150,apertureSize = 5)
 lineNumbers = 35
 lines = cv2.HoughLines(edges,1,np.pi/180,lineNumbers)
-# print(len(lines))
-# while len(lines)<3:
-#     lineNumbers -= 2
-#     lines = cv2.HoughLines(gray, 1, np.pi / 180, lineNumbers)
-print(type(lines))
-print(len(lines))
 
-the_list = [100000000000]
-# lines = np.sort(lines.view('i8,i8,i8'), order=['f1'], axis=0).view(np.int)
-# print(lines)
+the_list = [float('inf')]
+
 for line in lines:
     for rho,theta in line:
         if abs(min(the_list, key=lambda x: abs(x - rho))-rho)<7 :
@@ -38,7 +31,7 @@ for line in lines:
 
             the_list.append(rho)
             cv2.line(img,(x1,y1),(x2,y2),(0,0,255),2)
-print(the_list)
+            
 cv2.imwrite('houghlines2.jpg',img)
 
 # import cv2
